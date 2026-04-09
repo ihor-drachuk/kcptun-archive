@@ -1,4 +1,4 @@
-module github.com/xtaci/kcptun
+module github.com/dumbybumby/kcptun-archive
 
 require (
 	github.com/fatih/color v1.18.0
