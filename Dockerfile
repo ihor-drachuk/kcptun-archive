@@ -4,7 +4,7 @@ LABEL org.opencontainers.image.source=https://github.com/dumbybumby/kcptun-archi
 ENV GO111MODULE=on
 RUN apk add git
 RUN git clone https://github.com/dumbybumby/kcptun-archive
-RUN cd kcptun && \
+RUN cd kcptun-archive && \
 	go build -mod=vendor -ldflags "-X main.VERSION=$(date -u +%Y%m%d) -s -w" -o /client github.com/dumbybumby/kcptun-archive/client && \
 	go build -mod=vendor -ldflags "-X main.VERSION=$(date -u +%Y%m%d) -s -w" -o /server github.com/dumbybumby/kcptun-archive/server
 
