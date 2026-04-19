@@ -2,24 +2,25 @@
 
 > ⚠️ **Project Status Notice**
 >
-> This project is a restored repository from the last xtaci/kcptun commit before the wipeout.  
-> It will receive periodic updates from Dependabot, but there is no other work being done here.
+> This project is a restored repository from the last [xtaci/kcptun](https://github.com/xtaci/kcptun) commit before the wipeout.  
+> Originally archived by [dumbybumby](https://github.com/dumbybumby/kcptun-archive), forked by [ihor-drachuk](https://github.com/ihor-drachuk/kcptun-archive) for personal use.  
+> No active development is being done here.
 
 [![Powered][17]][18] [![MIT licensed][11]][12] [![Build Status][3]][4] [![Go Report Card][5]][6]
 
 
 [1]: https://img.shields.io/docker/pulls/xtaci/kcptun
 [2]: https://hub.docker.com/r/xtaci/kcptun
-[3]: https://img.shields.io/github/created-at/dumbybumby/kcptun-archive
-[4]: https://img.shields.io/github/created-at/dumbybumby/kcptun-archive
-[5]: https://goreportcard.com/badge/github.com/dumbybumby/kcptun-archive
-[6]: https://goreportcard.com/report/github.com/dumbybumby/kcptun-archive
-[11]: https://img.shields.io/github/license/dumbybumby/kcptun-archive
+[3]: https://img.shields.io/github/created-at/ihor-drachuk/kcptun-archive
+[4]: https://img.shields.io/github/created-at/ihor-drachuk/kcptun-archive
+[5]: https://goreportcard.com/badge/github.com/ihor-drachuk/kcptun-archive
+[6]: https://goreportcard.com/report/github.com/ihor-drachuk/kcptun-archive
+[11]: https://img.shields.io/github/license/ihor-drachuk/kcptun-archive
 [12]: LICENSE.md
-[13]: https://img.shields.io/github/v/release/dumbybumby/kcptun-archive?color=orange
-[14]: https://github.com/dumbybumby/kcptun-archive/releases/latest
-[15]: https://img.shields.io/github/downloads/dumbybumby/kcptun-archive/total.svg?maxAge=1800&color=orange
-[16]: https://github.com/dumbybumby/kcptun-archive/releases
+[13]: https://img.shields.io/github/v/release/ihor-drachuk/kcptun-archive?color=orange
+[14]: https://github.com/ihor-drachuk/kcptun-archive/releases/latest
+[15]: https://img.shields.io/github/downloads/ihor-drachuk/kcptun-archive/total.svg?maxAge=1800&color=orange
+[16]: https://github.com/ihor-drachuk/kcptun-archive/releases
 [17]: https://img.shields.io/badge/KCP-Powered-blue.svg
 [18]: https://github.com/skywind3000/kcp
 
@@ -30,7 +31,7 @@
 
 1. Technical Purpose: This software is a general-purpose network transport accelerator based on the KCP protocol. It is designed solely for academic research, network performance testing, and legal optimization of data transmission in high-latency environments.
 
-2. Official Channel: The developer maintains only one official website: github.com/dumbybumby/kcptun-archive. Any other websites, mirrors, or repackaged versions are NOT endorsed by the developer.
+2. Original Repository: The original project was developed at [github.com/xtaci/kcptun](https://github.com/xtaci/kcptun) (now wiped). This fork is an archive for personal use and is not an official distribution.
 
 3. User Responsibility: Users are strictly required to comply with all local laws and regulations. You must NOT use this tool to establish illegal network channels, circumvent national regulatory systems, or engage in any activities that violate the laws of the People's Republic of China or your own jurisdiction.
 
@@ -73,7 +74,6 @@
 | CPU | ANY | amd64 with AES-NI & AVX2 |
 
 *NOTE: If you are using KVM, ensure that the guest OS supports AES instructions*
-<img src="https://github.com/dumbybumby/kcptun-archive/assets/2346725/9358e8e5-2a4a-4be9-9859-62f1aaa553b0" alt="cpuinfo" height="400px"/>
 
 ## QuickStart
 
@@ -81,7 +81,7 @@ Increase the number of open files on your server, as:
 
 `ulimit -n 65535`, or write it in `~/.bashrc`.
 
-Suggested [sysctl.conf](https://github.com/dumbybumby/kcptun-archive/blob/master/dist/linux/sysctl_linux) parameters for Linux to improve UDP packet handling:
+Suggested [sysctl.conf](dist/linux/sysctl_linux) parameters for Linux to improve UDP packet handling:
 
 ```
 net.core.rmem_max=26214400 // BDP - Bandwidth Delay Product
@@ -90,7 +90,7 @@ net.core.wmem_max=26214400
 net.core.wmem_default=26214400
 net.core.netdev_max_backlog=2048 // Proportional to -rcvwnd
 ```
-FreeBSD-related sysctl settings can be found here: https://github.com/dumbybumby/kcptun-archive/blob/master/dist/freebsd/sysctl_freebsd
+FreeBSD-related sysctl settings can be found here: [sysctl_freebsd](dist/freebsd/sysctl_freebsd)
 
 You can also increase the per-socket buffer by adding the parameter (default 4MB):
 ```
@@ -110,12 +110,12 @@ which relays the original connection:
 
 > Application -> Target Server(8388/tcp) 
 
-**_OR START WITH THESE COMPLETE CONFIGURATION FILES:_** [client](https://github.com/dumbybumby/kcptun-archive/blob/master/dist/local.json.example) --> [server](https://github.com/dumbybumby/kcptun-archive/blob/master/dist/server.json.example)
+**_OR START WITH THESE COMPLETE CONFIGURATION FILES:_** [client](dist/local.json.example) --> [server](dist/server.json.example)
 
 ## Building from source
 
 ```
-$ git clone https://github.com/dumbybumby/kcptun-archive.git
+$ git clone https://github.com/ihor-drachuk/kcptun-archive.git
 $ cd kcptun
 $ ./build-release.sh
 $ cd build
@@ -446,8 +446,6 @@ The encryption performance in kcptun is as fast as in openssl library(if not fas
 Quantum Resistance, also known as quantum-secure, post-quantum, or quantum-safe cryptography, refers to cryptographic algorithms that can withstand potential code-breaking attempts by quantum computers.
 Starting with version v20240701, kcptun adopts [QPP](https://github.com/xtaci/qpp) based on [Kuang's Quantum Permutation Pad](https://epjquantumtechnology.springeropen.com/articles/10.1140/epjqt/s40507-022-00145-y) for quantum-resistant communication.
 
-![da824f7919f70dd1dfa3be9d2302e4e0](https://github.com/dumbybumby/kcptun-archive/assets/2346725/7894f5e3-6134-4582-a9fe-e78494d2e417)
-
 To enable QPP in kcptun, set the following parameters:
 ```
    --QPP                Enable Quantum Permutation Pads (QPP)
@@ -548,8 +546,8 @@ Manual mode allows you to customize low-level KCP behavior. **Make sure you full
 ### Q: Are there example configuration files?
 A: Yes, official example configuration files are provided for quick setup:
 
-- [Client example](https://github.com/dumbybumby/kcptun-archive/blob/master/dist/local.json.example)
-- [Server example](https://github.com/dumbybumby/kcptun-archive/blob/master/dist/server.json.example)
+- [Client example](dist/local.json.example)
+- [Server example](dist/server.json.example)
 
 ### Q: What is the difference between `crypt=none` and `crypt=null`?
 A: Both options disable encryption, but they differ in protocol behavior:
@@ -578,9 +576,10 @@ In summary: `none` keeps the protocol header (plaintext payload), while `null` s
 1. https://en.wikipedia.org/wiki/Noisy-channel_coding_theorem -- Noisy channel coding theorem
 1. https://zhuanlan.zhihu.com/p/53849089 -- kcptun开发小记
 
-### Donation
-Click [here](https://github.com/xtaci/xtaci/issues/2) if you want to donate to the original developer.
-Also you can thank me for this repo by donating to my TON wallet: UQCJcU4udMJSWopkjnAGugiGceZqcXqhEMU_9vU7JeHF6e2b
+### Credits & Donations
 
+**Original author**: [xtaci](https://github.com/xtaci) — [donate to the original developer](https://github.com/xtaci/xtaci/issues/2)
 
-***（注意：kcptun没有任何社交网站的账号，请小心骗子。）***
+**Archive preserved by**: [dumbybumby](https://github.com/dumbybumby/kcptun-archive) — TON wallet: `UQCJcU4udMJSWopkjnAGugiGceZqcXqhEMU_9vU7JeHF6e2b`
+
+**Forked for personal use by**: [ihor-drachuk](https://github.com/ihor-drachuk/kcptun-archive)

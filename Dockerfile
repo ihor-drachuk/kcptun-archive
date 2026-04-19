@@ -1,10 +1,8 @@
 FROM golang:1.25.4-alpine3.21 AS builder
-MAINTAINER xtaci <daniel820313@gmail.com>
-LABEL org.opencontainers.image.source=https://github.com/dumbybumby/kcptun-archive
+LABEL org.opencontainers.image.source=https://github.com/ihor-drachuk/kcptun-archive
 ENV GO111MODULE=on
-RUN apk add git
-RUN git clone https://github.com/dumbybumby/kcptun-archive
-RUN cd kcptun-archive && \
+COPY . /src
+RUN cd /src && \
 	go build -mod=vendor -ldflags "-X main.VERSION=$(date -u +%Y%m%d) -s -w" -o /client github.com/dumbybumby/kcptun-archive/client && \
 	go build -mod=vendor -ldflags "-X main.VERSION=$(date -u +%Y%m%d) -s -w" -o /server github.com/dumbybumby/kcptun-archive/server
 

@@ -8,7 +8,7 @@ Release:        1
 Summary:        A Stable & Secure Tunnel based on KCP with N:M multiplexing and FEC
 
 License:        MIT
-URL:            https://github.com/dumbybumby/kcptun-archive
+URL:            https://github.com/ihor-drachuk/kcptun-archive
 Source0:        %{name}-%{version}.tar.gz
 
 BuildRequires:  golang
